@@ -75,10 +75,10 @@ enable_api = true
 # when every condition it sets matches the launch.
 # Example:
 #   [[inject]]
-#   path = "OpenSteamToolHook.dll"        # bare name resolves next to steam.exe; absolute path used as-is
+#   path = "OpenSteamToolHook.dll"      # bare name resolves next to steam.exe; absolute path used as-is
 #   when_cmdline = "-my_special_hook"   # optional: require this substring in the launch command (default: any)
-#   when_appids = [1361510]       # optional: restrict to these appids (default: any)
-#   all_games = false             # optional: true injects into every game, false only into Lua-added games (default: false)
+#   when_appids = [1361510]             # optional: restrict to these appids (default: any)
+#   all_games = false                   # optional: true injects into every game, false only into Lua-added games (default: false)
 
 [cloud]
 # Optional Steam Cloud save redirection for unlocked ("lua") games, powered by
