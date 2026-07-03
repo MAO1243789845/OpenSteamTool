@@ -1132,7 +1132,12 @@ namespace {
         // Steam Cloud save redirection: hand every "Cloud.*" request to
         // CloudRedirect. If it answers, suppress the outbound frame (the
         // synthesized response is delivered from the RecvPkt hook).
+        // ExitSyncDone/ConflictResolution are notifications that must reach
+        // Steam's internal cloud state machine untouched.
         if (std::strncmp(targetJobName, "Cloud.", 6) == 0) {
+            if (std::strcmp(targetJobName, "Cloud.SignalAppExitSyncDone#1") == 0 ||
+                std::strcmp(targetJobName, "Cloud.ClientConflictResolution#1") == 0)
+                return false;
             if (Hooks_NetPacket_Cloud::HandleSend(targetJobName, pBody, cbBody, pHdr, cbHdr))
                 g_SuppressSend = true;
             return false;   // never body-replace a cloud frame
